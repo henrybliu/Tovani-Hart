@@ -1,15 +1,16 @@
-import ProjectPage from "./ProjectPage";
 import SectionHeader from "../../components/SectionHeader";
-import PROJECTS_TEXT from "./PROJECTS_TEXT";
+import PROJECTS_CONSTANTS, { PROJECTS_TEXT } from "./PROJECTS_CONSTANTS";
+import ProjectTile from "./ProjectTile";
+import Page from "../../components/Section";
 
 const ProjectsSection = () => {
   return (
-    <div>
-      <SectionHeader>Projects</SectionHeader>
+    <Page>
+      <SectionHeader>{PROJECTS_CONSTANTS.header}</SectionHeader>
       {PROJECTS_TEXT.map((project, index) => {
-        return <ProjectPage key={index} project={project} />;
+        return <ProjectTile key={index} project={project} />;
       })}
-    </div>
+    </Page>
   );
 };
 

@@ -1,6 +1,6 @@
 import { ProjectProps } from "./PROJECTS_CONSTANTS";
 
-const ProjectPage = ({ project }: { project: ProjectProps }) => {
+const ProjectTile = ({ project }: { project: ProjectProps }) => {
   const name = project.name;
   const location = project.location;
   const description = project.description;
@@ -16,4 +16,4 @@ const ProjectPage = ({ project }: { project: ProjectProps }) => {
   );
 };
 
-export default ProjectPage;
+export default ProjectTile;

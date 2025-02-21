@@ -1,4 +1,4 @@
-import { EmployeeProps } from "./TEAM_TEXT";
+import { EmployeeProps } from "./TEAM_CONSTANTS";
 
 const EmployeePage = ({ employee }: { employee: EmployeeProps }) => {
   const name = employee.name;

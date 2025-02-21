@@ -1,12 +1,16 @@
+export const PROJECTS_CONSTANTS = {
+  header: "Projects",
+};
+
 export type ProjectProps = {
   name: string;
   location: string;
   description: string;
-  coverImage: string; // file path
-  otherImages: string[]; // file paths
+  coverImage: string; // image name
+  otherImages: string[]; // image names
 };
 
-const PROJECTS_TEXT: ProjectProps[] = [
+export const PROJECTS_TEXT: ProjectProps[] = [
   {
     name: "609 Warehouse",
     location: "Olympia, Washington",
@@ -17,4 +21,4 @@ const PROJECTS_TEXT: ProjectProps[] = [
   },
 ];
 
-export default PROJECTS_TEXT;
+export default PROJECTS_CONSTANTS;

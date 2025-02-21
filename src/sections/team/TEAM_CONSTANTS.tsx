@@ -2,10 +2,12 @@ export type EmployeeProps = {
   name: string;
   title: string;
   biography: string;
-  coverImage: string; // file path
+  coverImage: string; // image name
 };
 
-const TEAM_TEXT: EmployeeProps[] = [
+export const TEAM_CONSTANTS = { header: "Our Team" };
+
+export const TEAM_TEXT: EmployeeProps[] = [
   {
     name: "Jane Locke",
     title: "Project Coordinator",
@@ -15,4 +17,4 @@ const TEAM_TEXT: EmployeeProps[] = [
   },
 ];
 
-export default TEAM_TEXT;
+export default TEAM_CONSTANTS;
