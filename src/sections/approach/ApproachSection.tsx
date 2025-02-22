@@ -1,26 +1,37 @@
 import SectionHeader from "../../components/SectionHeader";
-import Page from "../../components/Section";
+import Section from "../../components/Section";
 import APPROACH_CONSTANTS from "./APPROACH_CONSTANTS";
 import { styled } from "@mui/material";
 import TYPOGRAPHY, { Paragraph } from "../../assets/Typography";
+import SectionContent from "../../components/SectionContent";
+import SPACING from "../../assets/Spacing";
+
+const {
+  header,
+  designProcessSubheader,
+  designProcessDescription,
+  sustainablePrinciplesDescription,
+  sustainablePrinciplesSubheader,
+} = APPROACH_CONSTANTS;
 
 const ApproachSection = () => {
   return (
-    <Page>
-      <SectionHeader>{APPROACH_CONSTANTS.header}</SectionHeader>
-      <SubHeader>{APPROACH_CONSTANTS.designProcessSubheader}</SubHeader>
-      <Paragraph>{APPROACH_CONSTANTS.designProcessDescription}</Paragraph>
-      <SubHeader>{APPROACH_CONSTANTS.sustainablePrinciplesSubheader}</SubHeader>
-      <Paragraph>
-        {APPROACH_CONSTANTS.sustainablePrinciplesDescription}
-      </Paragraph>
-    </Page>
+    <Section>
+      <SectionContent>
+        <SectionHeader>{header}</SectionHeader>
+        <SubHeader>{designProcessSubheader}</SubHeader>
+        <Paragraph>{designProcessDescription}</Paragraph>
+        <SubHeader>{sustainablePrinciplesSubheader}</SubHeader>
+        <Paragraph>{sustainablePrinciplesDescription}</Paragraph>
+      </SectionContent>
+    </Section>
   );
 };
 
 const SubHeader = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.h4,
   fontWeight: "bold",
+  margin: `${SPACING.large}px 0px`,
 });
 
 export default ApproachSection;

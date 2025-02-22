@@ -1,3 +1,4 @@
+import Page from "../../components/Section";
 import { EmployeeProps } from "./TEAM_CONSTANTS";
 
 const EmployeePage = ({ employee }: { employee: EmployeeProps }) => {
@@ -6,11 +7,11 @@ const EmployeePage = ({ employee }: { employee: EmployeeProps }) => {
   const biography = employee.biography;
 
   return (
-    <div>
+    <Page>
       <h1>{name}</h1>
       <h2>{title}</h2>
       <h3>{biography}</h3>
-    </div>
+    </Page>
   );
 };
 

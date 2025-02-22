@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
+import SPACING from "./Spacing";
 
 export const TYPOGRAPHY = {
-  fontFamily: { default: "Lato", fallback: "sans-serif" },
   fontSize: {
     h1: "36px",
     h2: "28px",
@@ -15,6 +15,7 @@ export const TYPOGRAPHY = {
 export const Paragraph = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.paragraph,
   fontWeight: 100,
+  margin: `${SPACING.default}px 0px`,
 });
 
 export default TYPOGRAPHY;

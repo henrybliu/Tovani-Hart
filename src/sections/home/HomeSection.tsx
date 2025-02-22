@@ -1,47 +1,67 @@
 import SectionHeader from "../../components/SectionHeader";
-import Page from "../../components/Section";
+import Section from "../../components/Section";
 import HOME_CONSTANTS from "./HOME_CONSTANTS";
-import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import TYPOGRAPHY, { Paragraph } from "../../assets/Typography";
 import { styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import SPACING from "../../assets/Spacing";
+import COLORS from "../../assets/Colors";
+import ParallaxImage from "../../utils/ParallaxImage";
+import SectionContent from "../../components/SectionContent";
 
-const image = require("../../assets/images/building.jpg");
+const {
+  backgroundImage,
+  header,
+  sendResumeText,
+  emailAddress,
+  sendResumeAnywayText,
+  hiringText,
+  positionHiring,
+} = HOME_CONSTANTS;
 
 const HomeSection = () => {
   return (
-    <Page>
-      <ParallaxBanner style={{ minWidth: "100vw", minHeight: "110vh" }}>
-        <ParallaxBannerLayer speed={-50}>
-          <img src={image} alt="background" loading="lazy" />
-        </ParallaxBannerLayer>
-
-        <ParallaxBannerLayer>
-          <HomeContent />
-        </ParallaxBannerLayer>
-      </ParallaxBanner>
-    </Page>
+    <Section>
+      <ParallaxImage imageName={backgroundImage} />
+      <HomeContent />
+    </Section>
   );
 };
 
 const HomeContent = () => {
   return (
-    <>
-      <SectionHeader>{HOME_CONSTANTS.header}</SectionHeader>
-      <Paragraph>{HOME_CONSTANTS.sendResumeText}</Paragraph>
-      <Paragraph>{HOME_CONSTANTS.sendResumeAnywayText}</Paragraph>
-      <Paragraph>{HOME_CONSTANTS.hiringText}</Paragraph>
+    <SectionContent
+      style={{
+        position: "absolute",
+        zIndex: 10,
+        bottom: "20%",
+        maxWidth: "none",
+      }}
+    >
+      <SectionHeader>{header}</SectionHeader>
+      <Paragraph>
+        {sendResumeText}{" "}
+        <a
+          href={`mailto:${emailAddress}`}
+          style={{ textDecoration: "none", color: COLORS.white }}
+        >
+          {emailAddress}
+        </a>
+      </Paragraph>
+      <Paragraph>{sendResumeAnywayText}</Paragraph>
+      <Paragraph style={{ padding: `${SPACING.large}px 0px` }}>
+        {hiringText}
+      </Paragraph>
       <HiringLink />
-    </>
+    </SectionContent>
   );
 };
 
 const HiringLink = () => {
   return (
     <HiringLinkContainer>
-      <HiringLinkText>{HOME_CONSTANTS.positionHiring}</HiringLinkText>
+      <HiringLinkText>{positionHiring}</HiringLinkText>
       <FontAwesomeIcon icon={faArrowRight} />
     </HiringLinkContainer>
   );
@@ -54,7 +74,7 @@ const HiringLinkContainer = styled("div")({
 });
 
 const HiringLinkText = styled("div")({
-  fontWeight: "bold",
+  fontWeight: 600,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
   textDecoration: "underline",
   "&:hover": {

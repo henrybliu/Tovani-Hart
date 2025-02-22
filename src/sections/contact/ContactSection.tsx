@@ -1,19 +1,59 @@
 import SectionHeader from "../../components/SectionHeader";
-import Page from "../../components/Section";
+import Section from "../../components/Section";
 import CONTACT_CONSTANTS from "./CONTACT_CONSTANTS";
 import { styled } from "@mui/material";
 import TYPOGRAPHY, { Paragraph } from "../../assets/Typography";
+import COLORS from "../../assets/Colors";
+import SPACING from "../../assets/Spacing";
+import SectionContent from "../../components/SectionContent";
+
+const {
+  header,
+  companyName,
+  streetAddress,
+  cityStateZip,
+  phoneNumber,
+  emailAddress,
+  mapImage,
+} = CONTACT_CONSTANTS;
+
+const mapFilePath = require(`../../assets/images/${mapImage}`);
 
 const ContactSection = () => {
   return (
-    <Page>
-      <SectionHeader>{CONTACT_CONSTANTS.header}</SectionHeader>
-      <Logo>{CONTACT_CONSTANTS.companyName}</Logo>
-      <Paragraph>{CONTACT_CONSTANTS.streetAddress}</Paragraph>
-      <Paragraph>{CONTACT_CONSTANTS.cityStateZip}</Paragraph>
-      <Paragraph>{CONTACT_CONSTANTS.phoneNumber}</Paragraph>
-      <Paragraph>{CONTACT_CONSTANTS.emailAddress}</Paragraph>
-    </Page>
+    <Section>
+      <SectionContent style={{ maxWidth: "none" }}>
+        <SectionHeader>{header}</SectionHeader>
+        <img
+          src={mapFilePath}
+          alt="map"
+          style={{
+            marginBottom: `${SPACING.default}px`,
+            marginTop: `${SPACING.default}px`,
+            maxWidth: "100%",
+          }}
+        />
+        <Logo>{companyName}</Logo>
+        <Paragraph>{streetAddress}</Paragraph>
+        <Paragraph>{cityStateZip}</Paragraph>
+        <Paragraph>
+          <a
+            href={`tel:+${phoneNumber}`}
+            style={{ textDecoration: "none", color: COLORS.white }}
+          >
+            {phoneNumber}
+          </a>
+        </Paragraph>
+        <Paragraph>
+          <a
+            href={`mailto:${emailAddress}`}
+            style={{ textDecoration: "none", color: COLORS.white }}
+          >
+            {emailAddress}
+          </a>
+        </Paragraph>
+      </SectionContent>
+    </Section>
   );
 };
 

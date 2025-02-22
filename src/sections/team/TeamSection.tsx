@@ -1,16 +1,19 @@
 import SectionHeader from "../../components/SectionHeader";
 // import EmployeePage from "./EmployeePage";
 import TEAM_CONSTANTS from "./TEAM_CONSTANTS";
-import Page from "../../components/Section";
+import Section from "../../components/Section";
+import SectionContent from "../../components/SectionContent";
 
 const TeamSection = () => {
   return (
-    <Page>
-      <SectionHeader>{TEAM_CONSTANTS.header}</SectionHeader>
-      {/* {TEAM_TEXT.map((employee, index) => {
+    <Section>
+      <SectionContent>
+        <SectionHeader>{TEAM_CONSTANTS.header}</SectionHeader>
+        {/* {TEAM_TEXT.map((employee, index) => {
         return <EmployeePage key={index} employee={employee} />;
       })} */}
-    </Page>
+      </SectionContent>
+    </Section>
   );
 };
 

@@ -2,6 +2,7 @@ const DEFAULT_SPACING = 8;
 
 export const SPACING = {
   tiny: 6, // 6px
+  default: DEFAULT_SPACING, // 8px
   small: DEFAULT_SPACING, // 8px
   medium: DEFAULT_SPACING * 1.5, // 12px
   large: DEFAULT_SPACING * 2, // 16px
