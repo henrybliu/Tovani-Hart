@@ -13,9 +13,9 @@ const SectionHeader = ({ children }: SectionHeaderProps) => {
 const Container = styled("div")({
   textTransform: "uppercase",
   fontSize: TYPOGRAPHY.fontSize.h1,
-  fontWeight: 400,
+  fontWeight: TYPOGRAPHY.fontWeight.bold,
   marginTop: `${15 * SPACING.default}px`,
-  marginBottom: `${SPACING.large}px`,
+  marginBottom: `${SPACING.extraLarge}px`,
 });
 
 export default SectionHeader;

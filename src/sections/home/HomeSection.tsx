@@ -74,7 +74,7 @@ const HiringLinkContainer = styled("div")({
 });
 
 const HiringLinkText = styled("div")({
-  fontWeight: 600,
+  fontWeight: TYPOGRAPHY.fontWeight.bold,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
   textDecoration: "underline",
   "&:hover": {

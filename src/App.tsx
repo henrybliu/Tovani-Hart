@@ -6,12 +6,13 @@ import ServicesSection from "./sections/services/ServicesSection";
 import TeamSection from "./sections/team/TeamSection";
 import COLORS from "./assets/Colors";
 import { useEffect } from "react";
+import "./assets/fonts/font.css";
 
 function App() {
   useEffect(() => {
     document.body.style.backgroundColor = COLORS.navy;
     document.body.style.color = COLORS.white;
-    document.body.style.fontFamily = "Host Grotesk, sans-serif";
+    document.body.style.fontFamily = "CustomFont, Lato";
   }, []);
 
   return (

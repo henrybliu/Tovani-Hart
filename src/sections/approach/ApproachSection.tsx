@@ -30,7 +30,7 @@ const ApproachSection = () => {
 
 const SubHeader = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.h4,
-  fontWeight: "bold",
+  fontWeight: TYPOGRAPHY.fontWeight.bolder,
   margin: `${SPACING.large}px 0px`,
 });
 

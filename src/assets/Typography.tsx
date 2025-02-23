@@ -8,13 +8,16 @@ export const TYPOGRAPHY = {
     h3: "20px",
     h4: "18px",
     logo: "24px",
-    paragraph: "16px",
+    paragraph: "17.5px",
+  },
+  fontWeight: {
+    bold: 500,
+    bolder: 700,
   },
 };
 
-export const Paragraph = styled("div")({
+export const Paragraph = styled("p")({
   fontSize: TYPOGRAPHY.fontSize.paragraph,
-  fontWeight: 100,
   margin: `${SPACING.default}px 0px`,
 });
 

@@ -5,7 +5,10 @@ export type EmployeeProps = {
   coverImage: string; // image name
 };
 
-export const TEAM_CONSTANTS = { header: "Our Team" };
+export const TEAM_CONSTANTS = {
+  backgroundImage: "bg3.jpg",
+  header: "Our Team",
+};
 
 export const TEAM_TEXT: EmployeeProps[] = [
   {

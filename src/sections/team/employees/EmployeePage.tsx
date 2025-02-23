@@ -1,5 +1,5 @@
-import Page from "../../components/Section";
-import { EmployeeProps } from "./TEAM_CONSTANTS";
+import Page from "../../../components/Section";
+import { EmployeeProps } from "../TEAM_CONSTANTS";
 
 const EmployeePage = ({ employee }: { employee: EmployeeProps }) => {
   const name = employee.name;

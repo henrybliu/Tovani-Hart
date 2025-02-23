@@ -28,8 +28,7 @@ const ContactSection = () => {
           src={mapFilePath}
           alt="map"
           style={{
-            marginBottom: `${SPACING.default}px`,
-            marginTop: `${SPACING.default}px`,
+            margin: `${SPACING.default}px 0px`,
             maxWidth: "100%",
           }}
         />
@@ -60,7 +59,6 @@ const ContactSection = () => {
 const Logo = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.logo,
   textTransform: "uppercase",
-  fontWeight: 100,
 });
 
 export default ContactSection;

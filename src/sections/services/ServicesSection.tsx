@@ -7,7 +7,7 @@ import { styled } from "@mui/material";
 import SectionContent from "../../components/SectionContent";
 import SPACING from "../../assets/Spacing";
 
-const { header, description, pillars } = SERVICES_CONSTANTS;
+const { backgroundImage, header, description, pillars } = SERVICES_CONSTANTS;
 
 const ServicesSection = () => {
   return (
@@ -44,13 +44,11 @@ const Pillar = ({ text, isLast }: PillarProps) => {
 
 const PillarText = styled("div")<{ isLast: boolean }>(({ isLast }) => ({
   fontSize: TYPOGRAPHY.fontSize.h3,
-  fontWeight: 100,
   textTransform: "capitalize",
   padding: "10px 12px 10px 12px",
   borderTop: "1px solid grey",
   borderBottom: isLast ? "1px solid grey" : "none",
   backgroundColor: `${COLORS.transparentNavy}`,
-  // backgroundColor: "red",
 }));
 
 export default ServicesSection;

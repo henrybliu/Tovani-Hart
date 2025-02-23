@@ -6,7 +6,7 @@ const Section = ({ children }: { children: React.ReactNode }) => {
 
 const Container = styled("div")({
   width: "100vw",
-  minHeight: "100vh",
+  minHeight: "110vh",
   overflow: "hidden",
 });
 
