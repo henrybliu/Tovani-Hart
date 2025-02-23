@@ -30,7 +30,7 @@ const ServicesSection = () => {
 };
 
 const PillarsContainer = styled("div")({
-  marginTop: `${5 * SPACING.default}px`,
+  marginTop: `${4 * SPACING.default}px`,
 });
 
 type PillarProps = {
