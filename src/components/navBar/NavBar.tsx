@@ -113,6 +113,7 @@ const MenuModal = ({
             paddingTop: `${SPACING.extraLarge}`,
             paddingRight: `${SPACING.extraLarge}px`,
             paddingBottom: `${SPACING.default}px`,
+            cursor: "pointer",
           }}
           onClick={() => {
             setIsMenuOpen((prev) => !prev);
@@ -233,6 +234,8 @@ const MobileLinkContainer = styled("div")<{ isLast: boolean }>(
     borderTop: "1px solid grey",
     borderBottom: isLast ? "1px solid grey" : "none",
     padding: SPACING.large,
+    cursor: "pointer",
+
     "&:hover": {
       backgroundColor: COLORS.highlightedBlue,
     },
