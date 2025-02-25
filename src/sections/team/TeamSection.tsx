@@ -6,9 +6,9 @@ import SectionContent from "../../components/SectionContent";
 
 const { backgroundImage, header } = TEAM_CONSTANTS;
 
-const TeamSection = () => {
+const TeamSection = ({ id }: { id: string }) => {
   return (
-    <Section>
+    <Section id={id}>
       <SectionContent>
         <SectionHeader>{header}</SectionHeader>
         {/* {TEAM_TEXT.map((employee, index) => {

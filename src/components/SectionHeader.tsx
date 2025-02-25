@@ -4,17 +4,18 @@ import SPACING from "../assets/Spacing";
 
 type SectionHeaderProps = {
   children: React.ReactNode;
+  style?: React.CSSProperties;
 };
 
-const SectionHeader = ({ children }: SectionHeaderProps) => {
-  return <Container>{children}</Container>;
+const SectionHeader = ({ children, style }: SectionHeaderProps) => {
+  return <Container style={{ ...style }}>{children}</Container>;
 };
 
 const Container = styled("div")({
   textTransform: "uppercase",
   fontSize: TYPOGRAPHY.fontSize.h1,
   fontWeight: TYPOGRAPHY.fontWeight.bold,
-  marginTop: `${15 * SPACING.default}px`,
+  marginTop: `${10 * SPACING.default}px`,
   marginBottom: `${SPACING.extraLarge}px`,
 });
 

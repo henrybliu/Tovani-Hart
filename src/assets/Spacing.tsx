@@ -9,4 +9,6 @@ export const SPACING = {
   extraLarge: DEFAULT_SPACING * 3, // 24px
 };
 
+export const MOBILE_NAVBAR_SCREEN_WIDTH = 960;
+
 export default SPACING;

@@ -5,6 +5,7 @@ import { styled } from "@mui/material";
 import TYPOGRAPHY, { Paragraph } from "../../assets/Typography";
 import SectionContent from "../../components/SectionContent";
 import SPACING from "../../assets/Spacing";
+import useMobileScreen from "../../utils/useMobileScreen";
 
 const {
   header,
@@ -14,10 +15,12 @@ const {
   sustainablePrinciplesSubheader,
 } = APPROACH_CONSTANTS;
 
-const ApproachSection = () => {
+const ApproachSection = ({ id }: { id: string }) => {
+  const isMobileScreen = useMobileScreen();
+
   return (
-    <Section>
-      <SectionContent>
+    <Section id={id}>
+      <SectionContent style={{ maxWidth: isMobileScreen ? "100%" : "" }}>
         <SectionHeader>{header}</SectionHeader>
         <SubHeader>{designProcessSubheader}</SubHeader>
         <Paragraph>{designProcessDescription}</Paragraph>

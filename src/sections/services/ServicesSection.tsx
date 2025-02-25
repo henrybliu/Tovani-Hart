@@ -6,13 +6,16 @@ import COLORS from "../../assets/Colors";
 import { styled } from "@mui/material";
 import SectionContent from "../../components/SectionContent";
 import SPACING from "../../assets/Spacing";
+import useMobileScreen from "../../utils/useMobileScreen";
 
 const { backgroundImage, header, description, pillars } = SERVICES_CONSTANTS;
 
-const ServicesSection = () => {
+const ServicesSection = ({ id }: { id: string }) => {
+  const isMobileScreen = useMobileScreen();
+
   return (
-    <Section>
-      <SectionContent>
+    <Section id={id}>
+      <SectionContent style={{ maxWidth: isMobileScreen ? "100%" : "" }}>
         <SectionHeader>{header}</SectionHeader>
         <Paragraph>{description}</Paragraph>
         <PillarsContainer>
@@ -48,7 +51,7 @@ const PillarText = styled("div")<{ isLast: boolean }>(({ isLast }) => ({
   padding: "10px 12px 10px 12px",
   borderTop: "1px solid grey",
   borderBottom: isLast ? "1px solid grey" : "none",
-  backgroundColor: `${COLORS.transparentNavy}`,
+  backgroundColor: `${COLORS.transparentNavy1}`,
 }));
 
 export default ServicesSection;

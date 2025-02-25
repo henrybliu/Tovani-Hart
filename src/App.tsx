@@ -1,3 +1,4 @@
+import NavBar from "./components/navBar/NavBar";
 import ApproachSection from "./sections/approach/ApproachSection";
 import ContactSection from "./sections/contact/ContactSection";
 import HomeSection from "./sections/home/HomeSection";
@@ -17,12 +18,13 @@ function App() {
 
   return (
     <>
-      <HomeSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <ApproachSection />
-      <TeamSection />
-      <ContactSection />
+      <NavBar />
+      <HomeSection id="home" />
+      <ProjectsSection id="projects" />
+      <ServicesSection id="services" />
+      <ApproachSection id="approach" />
+      <TeamSection id="team" />
+      <ContactSection id="contact" />
     </>
   );
 }
