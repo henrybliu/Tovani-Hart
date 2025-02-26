@@ -45,7 +45,7 @@ const ParallaxImage = ({ imageName, style }: ParallaxImageProps) => {
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "scroll",
         backgroundPosition: `center ${scrollPosition * 0.5}px`,
-        height: "105vh",
+        height: "110vh",
         position: "relative",
         width: "100%",
         zIndex: -1,

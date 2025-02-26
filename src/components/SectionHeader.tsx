@@ -16,7 +16,7 @@ const Container = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.h1,
   fontWeight: TYPOGRAPHY.fontWeight.bold,
   marginTop: `${10 * SPACING.default}px`,
-  marginBottom: `${SPACING.extraLarge}px`,
+  marginBottom: `${SPACING.large}px`,
 });
 
 export default SectionHeader;

@@ -22,7 +22,9 @@ const ApproachSection = ({ id }: { id: string }) => {
     <Section id={id}>
       <SectionContent style={{ maxWidth: isMobileScreen ? "100%" : "" }}>
         <SectionHeader>{header}</SectionHeader>
-        <SubHeader>{designProcessSubheader}</SubHeader>
+        <SubHeader style={{ marginTop: "0px" }}>
+          {designProcessSubheader}
+        </SubHeader>
         <Paragraph>{designProcessDescription}</Paragraph>
         <SubHeader>{sustainablePrinciplesSubheader}</SubHeader>
         <Paragraph>{sustainablePrinciplesDescription}</Paragraph>

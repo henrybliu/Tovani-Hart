@@ -25,13 +25,16 @@ const ContactSection = ({ id }: { id: string }) => {
 
   return (
     <Section id={id}>
-      <SectionContent style={{ maxWidth: isMobileScreen ? "100%" : "50%" }}>
+      <SectionContent
+        style={{
+          maxWidth: isMobileScreen ? "100%" : "50%",
+        }}
+      >
         <SectionHeader>{header}</SectionHeader>
         <img
           src={mapFilePath}
           alt="map"
           style={{
-            margin: `${SPACING.default}px 0px`,
             width: "100%",
           }}
         />
@@ -62,6 +65,7 @@ const ContactSection = ({ id }: { id: string }) => {
 const Logo = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.logo,
   textTransform: "uppercase",
+  marginTop: `${SPACING.default}px`,
 });
 
 export default ContactSection;

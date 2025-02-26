@@ -165,16 +165,17 @@ const DesktopNavBarContainer = styled("div")({
   flexDirection: "column",
   padding: `${9 * SPACING.default}px`,
   justifyContent: "center",
+  zIndex: 10,
 });
 
 const LogoContainer = styled("div")({
-  height: "50%",
+  height: "45%",
   display: "flex",
   justifyContent: "flex-end",
 });
 
 const NavBarLinksContainer = styled("div")({
-  height: "65%",
+  height: "55%",
 });
 
 const DesktopLinksContainer = styled("div")({

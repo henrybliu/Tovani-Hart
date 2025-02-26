@@ -38,7 +38,7 @@ const HomeContent = () => {
     <div
       style={{
         position: "absolute",
-        zIndex: 10,
+        zIndex: 5,
         height: isMobileScreen ? "100%" : "",
         width: "100%",
         display: "flex",
@@ -77,7 +77,7 @@ const HomeContent = () => {
         >
           {header}
         </SectionHeader>
-        <Paragraph>
+        <Paragraph style={{ marginTop: "0px" }}>
           {sendResumeText}{" "}
           <a
             href={`mailto:${emailAddress}`}
@@ -85,9 +85,10 @@ const HomeContent = () => {
           >
             {emailAddress}
           </a>
+          <br />
+          {sendResumeAnywayText}
         </Paragraph>
-        <Paragraph>{sendResumeAnywayText}</Paragraph>
-        <Paragraph style={{ padding: `${SPACING.large}px 0px` }}>
+        <Paragraph style={{ padding: `${SPACING.default}px 0px` }}>
           {hiringText}
         </Paragraph>
         <HiringLink />

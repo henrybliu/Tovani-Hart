@@ -15,7 +15,6 @@ const Container = styled("div")({
   marginRight: `${SPACING.default}%`,
   maxWidth: `${46 * SPACING.default}px`,
   lineHeight: 1.4,
-  // TODO: when switching to mobile view, all content should be centered
 });
 
 export default SectionContent;
