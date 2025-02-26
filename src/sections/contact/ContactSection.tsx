@@ -38,18 +38,18 @@ const ContactSection = ({ id }: { id: string }) => {
             width: "100%",
           }}
         />
-        <Logo>{companyName}</Logo>
-        <Paragraph>{streetAddress}</Paragraph>
-        <Paragraph>{cityStateZip}</Paragraph>
+
         <Paragraph>
+          <Logo>{companyName}</Logo>
+          {streetAddress} <br />
+          {cityStateZip} <br />
           <a
             href={`tel:+${phoneNumber}`}
             style={{ textDecoration: "none", color: COLORS.white }}
           >
             {phoneNumber}
           </a>
-        </Paragraph>
-        <Paragraph>
+          <br />
           <a
             href={`mailto:${emailAddress}`}
             style={{ textDecoration: "none", color: COLORS.white }}
@@ -62,10 +62,11 @@ const ContactSection = ({ id }: { id: string }) => {
   );
 };
 
-const Logo = styled("div")({
+const Logo = styled("p")({
   fontSize: TYPOGRAPHY.fontSize.logo,
   textTransform: "uppercase",
-  marginTop: `${SPACING.default}px`,
+  marginTop: `${SPACING.large}px`,
+  marginBottom: "0px",
 });
 
 export default ContactSection;

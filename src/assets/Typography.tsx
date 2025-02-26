@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import SPACING, { MOBILE_NAVBAR_SCREEN_WIDTH } from "./Spacing";
+import { MOBILE_NAVBAR_SCREEN_WIDTH } from "./Spacing";
 
 const getParagraphFontSize = () => {
   return window.matchMedia(`(max-width: ${MOBILE_NAVBAR_SCREEN_WIDTH}px)`)
@@ -25,7 +25,6 @@ export const TYPOGRAPHY = {
 
 export const Paragraph = styled("p")({
   fontSize: TYPOGRAPHY.fontSize.paragraph,
-  margin: `${SPACING.default}px 0px`,
 });
 
 // listener to update paragraph text size

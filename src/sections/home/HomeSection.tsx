@@ -73,7 +73,9 @@ const HomeContent = () => {
         }}
       >
         <SectionHeader
-          style={{ marginTop: isMobileScreen ? `${SPACING.large}px` : "" }}
+          style={{
+            marginTop: isMobileScreen ? `${SPACING.large}px` : "",
+          }}
         >
           {header}
         </SectionHeader>
@@ -88,9 +90,7 @@ const HomeContent = () => {
           <br />
           {sendResumeAnywayText}
         </Paragraph>
-        <Paragraph style={{ padding: `${SPACING.default}px 0px` }}>
-          {hiringText}
-        </Paragraph>
+        <Paragraph style={{ marginTop: "0px" }}>{hiringText}</Paragraph>
         <HiringLink />
       </SectionContent>
     </div>
