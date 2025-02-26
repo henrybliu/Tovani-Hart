@@ -1,4 +1,4 @@
-export const SERVICES_CONSTANTS = {
+const SERVICES_CONSTANTS = {
   backgroundImage: "bg2.jpg",
   header: "Services",
   description:

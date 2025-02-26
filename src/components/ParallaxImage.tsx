@@ -1,54 +1,71 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 type ParallaxImageProps = {
   imageName: string;
   style?: React.CSSProperties;
+  speed?: number;
 };
 
-const ParallaxImage = ({ imageName, style }: ParallaxImageProps) => {
+const ParallaxImage = ({
+  imageName,
+  style,
+  speed = 0.55,
+}: ParallaxImageProps) => {
   const backgroundImage = require(`../assets/images/${imageName}`);
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  const debounce = (func: Function, wait: number) => {
-    let timeoutId: NodeJS.Timeout;
-
-    return function (this: any, ...args: any[]) {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        func.apply(this, args);
-      }, wait);
-    };
-  };
-
-  const updateScrollPosition = useCallback(() => {
-    requestAnimationFrame(() => {
-      setScrollPosition(window.scrollY);
-    });
-  }, []);
+  const [offset, setOffset] = useState(0);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = debounce(updateScrollPosition, 5);
+    const element = elementRef.current;
+    if (!element) return;
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const calculateOffset = () => {
+      const rect = element.getBoundingClientRect();
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const elementTop = rect.top + scrollTop;
+      const elementHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      const windowCenter = scrollTop + windowHeight / 2;
+      const elementCenter = elementTop + elementHeight / 2;
+      const distanceFromCenter = elementCenter - windowCenter;
+
+      setOffset(-distanceFromCenter * speed);
+    };
+
+    calculateOffset();
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          calculateOffset();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", calculateOffset);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", calculateOffset);
     };
-  }, [updateScrollPosition]);
+  }, [speed]);
 
   return (
     <div
+      ref={elementRef}
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "scroll",
-        backgroundPosition: `center ${scrollPosition * 0.5}px`,
-        height: "110vh",
+        backgroundPosition: `center ${offset}px`,
+        height: "100vh",
         position: "relative",
         width: "100%",
-        zIndex: -1,
         transform: "translate3d(0, 0, 0)",
         willChange: "transform",
         WebkitOverflowScrolling: "touch",

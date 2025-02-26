@@ -7,6 +7,7 @@ export const COLORS = {
   green: "#3A4C01",
   black: "#333333",
   gray: "#FFFFFFB3",
+  transparentGray: "#00000080",
 };
 
 export default COLORS;

@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState } from "react";
 import SectionHeader from "../../components/SectionHeader";
 import Section from "../../components/Section";
 import HOME_CONSTANTS from "./HOME_CONSTANTS";
@@ -11,6 +11,7 @@ import ParallaxImage from "../../components/ParallaxImage";
 import SectionContent from "../../components/SectionContent";
 import Logo from "../../components/Logo";
 import useMobileScreen from "../../utils/useMobileScreen";
+import Modal from "../../components/Modal";
 
 const {
   backgroundImage,
@@ -20,18 +21,53 @@ const {
   sendResumeAnywayText,
   hiringText,
   positionHiring,
+  positionBulletPoints,
+  positionAvailability,
 } = HOME_CONSTANTS;
 
 const HomeSection = ({ id }: { id: string }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Section id={id}>
       <ParallaxImage imageName={backgroundImage} />
-      <HomeContent />
+      {showModal ? <PositionModal setShowModal={setShowModal} /> : null}
+      <HomeContent setShowModal={setShowModal} />
     </Section>
   );
 };
 
-const HomeContent = () => {
+const PositionModal = ({
+  setShowModal,
+}: {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  return (
+    <Modal setShowModal={setShowModal}>
+      <div
+        style={{
+          fontSize: TYPOGRAPHY.fontSize.h4,
+          fontWeight: TYPOGRAPHY.fontWeight.bolder,
+        }}
+      >
+        {positionHiring}
+      </div>
+      <ul>
+        {positionBulletPoints.map((bulletPoint) => (
+          <li>{bulletPoint}</li>
+        ))}
+      </ul>
+
+      <Paragraph>{positionAvailability}</Paragraph>
+    </Modal>
+  );
+};
+
+const HomeContent = ({
+  setShowModal,
+}: {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const isMobileScreen = useMobileScreen();
 
   return (
@@ -45,13 +81,13 @@ const HomeContent = () => {
         flexDirection: "column",
         justifyContent: "space-between",
         top: isMobileScreen ? "60px" : "",
-        bottom: isMobileScreen ? "" : "15%",
+        bottom: isMobileScreen ? "" : "20%",
       }}
     >
       {isMobileScreen ? (
         <div
           style={{
-            height: "50%",
+            height: "45%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -64,22 +100,22 @@ const HomeContent = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: isMobileScreen ? "15%" : "",
+          justifyContent: "flex-start",
+          marginBottom: isMobileScreen ? "0%" : "",
           maxWidth: isMobileScreen
             ? `calc(100% - ${2 * SPACING.default}%)`
             : "60%",
-          height: "50%",
+          height: "55%",
         }}
       >
         <SectionHeader
           style={{
-            marginTop: isMobileScreen ? `${SPACING.large}px` : "",
+            marginTop: isMobileScreen ? `${SPACING.default}px` : "",
           }}
         >
           {header}
         </SectionHeader>
-        <Paragraph style={{ marginTop: "0px" }}>
+        <Paragraph>
           {sendResumeText}{" "}
           <a
             href={`mailto:${emailAddress}`}
@@ -90,16 +126,26 @@ const HomeContent = () => {
           <br />
           {sendResumeAnywayText}
         </Paragraph>
-        <Paragraph style={{ marginTop: "0px" }}>{hiringText}</Paragraph>
-        <HiringLink />
+        <Paragraph style={{ padding: `${SPACING.large}px 0px` }}>
+          {hiringText}
+        </Paragraph>
+        <HiringLink setShowModal={setShowModal} />
       </SectionContent>
     </div>
   );
 };
 
-const HiringLink = () => {
+const HiringLink = ({
+  setShowModal,
+}: {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
-    <HiringLinkContainer>
+    <HiringLinkContainer
+      onClick={() => {
+        setShowModal((prev) => !prev);
+      }}
+    >
       <HiringLinkText>{positionHiring}</HiringLinkText>
       <EastIcon />
     </HiringLinkContainer>
@@ -110,15 +156,13 @@ const HiringLinkContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  cursor: "pointer",
 });
 
 const HiringLinkText = styled("div")({
-  fontWeight: TYPOGRAPHY.fontWeight.bold,
+  fontWeight: TYPOGRAPHY.fontWeight.bolder,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
   textDecoration: "underline",
-  "&:hover": {
-    cursor: "pointer",
-  },
   marginRight: SPACING.small,
 });
 

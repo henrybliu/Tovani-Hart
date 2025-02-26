@@ -45,7 +45,11 @@ const ContactSection = ({ id }: { id: string }) => {
           {cityStateZip} <br />
           <a
             href={`tel:+${phoneNumber}`}
-            style={{ textDecoration: "none", color: COLORS.white }}
+            style={{
+              textDecoration: "none",
+              color: COLORS.white,
+              cursor: "pointer",
+            }}
           >
             {phoneNumber}
           </a>
@@ -62,7 +66,7 @@ const ContactSection = ({ id }: { id: string }) => {
   );
 };
 
-const Logo = styled("p")({
+const Logo = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.logo,
   textTransform: "uppercase",
   marginTop: `${SPACING.large}px`,

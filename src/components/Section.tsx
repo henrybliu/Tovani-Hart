@@ -13,6 +13,7 @@ const Container = styled("div")({
   width: "100vw",
   minHeight: "100vh",
   overflow: "hidden",
+  position: "relative",
 });
 
 export default Section;

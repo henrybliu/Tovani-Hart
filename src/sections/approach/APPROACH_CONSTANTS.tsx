@@ -1,4 +1,4 @@
-export const APPROACH_CONSTANTS = {
+const APPROACH_CONSTANTS = {
   header: "Our Approach",
   designProcessSubheader: "Design Process",
   designProcessDescription:

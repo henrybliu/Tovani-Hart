@@ -23,7 +23,7 @@ export const TYPOGRAPHY = {
   },
 };
 
-export const Paragraph = styled("p")({
+export const Paragraph = styled("div")({
   fontSize: TYPOGRAPHY.fontSize.paragraph,
 });
 
