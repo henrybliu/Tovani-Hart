@@ -16,6 +16,7 @@ function App() {
     document.body.style.fontFamily = "CustomFont, Lato";
   }, []);
 
+  // TODO: routing for the different project pages
   return (
     <>
       <NavBar />

@@ -1,5 +1,6 @@
 import { ProjectProps } from "./PROJECTS_CONSTANTS";
 
+// TODO: adjust this to just be a project image
 const ProjectTile = ({ project }: { project: ProjectProps }) => {
   const name = project.name;
   const location = project.location;

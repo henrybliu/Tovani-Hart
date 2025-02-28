@@ -7,6 +7,8 @@ const ProjectPage = ({ project }: { project: ProjectProps }) => {
   //   const coverImage = project.coverImage;
   //   const otherImages = project.otherImages;
 
+  // TODO: handle bullet points and paragraphs in the description
+  // TODO: handle vimeo video links
   return (
     <div>
       <h1>{name}</h1>
