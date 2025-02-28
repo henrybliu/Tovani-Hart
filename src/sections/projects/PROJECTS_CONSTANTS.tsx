@@ -6,8 +6,8 @@ export type ProjectProps = {
   name: string;
   location: string;
   description: string;
-  coverImage: string; // image name
-  otherImages: string[]; // image names
+  coverImage: string;
+  otherImages: string[];
 };
 
 export const PROJECTS_TEXT: ProjectProps[] = [

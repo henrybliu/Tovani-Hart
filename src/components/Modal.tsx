@@ -79,7 +79,7 @@ const BackLinkText = styled("div")({
 });
 
 const Background = styled("div")({
-  position: "absolute",
+  position: "fixed",
   zIndex: 9999,
   top: 0,
   left: 0,

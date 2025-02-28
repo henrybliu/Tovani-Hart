@@ -63,7 +63,7 @@ const NavBar = () => {
             }}
             onClick={handleMenuClick}
           />
-          {isMenuOpen ? <MenuModal setIsMenuOpen={setIsMenuOpen} /> : null}
+          {isMenuOpen && <MenuModal setIsMenuOpen={setIsMenuOpen} />}
         </MobileNavBarContainer>
       ) : (
         <DesktopNavBarContainer>
@@ -221,7 +221,6 @@ const MenuModalContainer = styled("div")({
   height: "100vh",
   width: "100vw",
   backgroundColor: COLORS.transparentNavy2,
-  // padding: `${SPACING.extraLarge}px 0px`,
 });
 
 const MobileLinksContainer = styled("div")({

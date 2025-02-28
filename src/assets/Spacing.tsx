@@ -1,6 +1,7 @@
 const DEFAULT_SPACING = 8;
 
 export const SPACING = {
+  extraTiny: 3, //3px
   tiny: 6, // 6px
   default: DEFAULT_SPACING, // 8px
   small: DEFAULT_SPACING, // 8px

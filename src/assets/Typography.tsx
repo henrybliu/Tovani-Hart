@@ -16,6 +16,7 @@ export const TYPOGRAPHY = {
     h4: "18px",
     logo: "24px",
     paragraph: getParagraphFontSize(),
+    note: "14px",
   },
   fontWeight: {
     bold: 500,

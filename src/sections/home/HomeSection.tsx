@@ -11,7 +11,7 @@ import ParallaxImage from "../../components/ParallaxImage";
 import SectionContent from "../../components/SectionContent";
 import Logo from "../../components/Logo";
 import useMobileScreen from "../../utils/useMobileScreen";
-import Modal from "../../components/Modal";
+import HiringModal from "./HiringModal";
 
 const {
   backgroundImage,
@@ -31,35 +31,16 @@ const HomeSection = ({ id }: { id: string }) => {
   return (
     <Section id={id}>
       <ParallaxImage imageName={backgroundImage} />
-      {showModal ? <PositionModal setShowModal={setShowModal} /> : null}
+      {showModal && (
+        <HiringModal
+          positionHiring={positionHiring}
+          positionBulletPoints={positionBulletPoints}
+          positionAvailability={positionAvailability}
+          setShowModal={setShowModal}
+        />
+      )}
       <HomeContent setShowModal={setShowModal} />
     </Section>
-  );
-};
-
-const PositionModal = ({
-  setShowModal,
-}: {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  return (
-    <Modal setShowModal={setShowModal}>
-      <div
-        style={{
-          fontSize: TYPOGRAPHY.fontSize.h4,
-          fontWeight: TYPOGRAPHY.fontWeight.bolder,
-        }}
-      >
-        {positionHiring}
-      </div>
-      <ul>
-        {positionBulletPoints.map((bulletPoint) => (
-          <li>{bulletPoint}</li>
-        ))}
-      </ul>
-
-      <Paragraph>{positionAvailability}</Paragraph>
-    </Modal>
   );
 };
 
@@ -73,18 +54,15 @@ const HomeContent = ({
   return (
     <div
       style={{
-        position: "absolute",
-        zIndex: 5,
-        height: isMobileScreen ? "100%" : "",
+        height: "100vh",
         width: "100%",
+        zIndex: 5,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        top: isMobileScreen ? "60px" : "",
-        bottom: isMobileScreen ? "" : "20%",
+        justifyContent: "flex-end",
       }}
     >
-      {isMobileScreen ? (
+      {isMobileScreen && (
         <div
           style={{
             height: "45%",
@@ -95,17 +73,16 @@ const HomeContent = ({
         >
           <Logo style={{ marginBottom: "0px" }} />
         </div>
-      ) : null}
+      )}
       <SectionContent
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
-          marginBottom: isMobileScreen ? "0%" : "",
           maxWidth: isMobileScreen
             ? `calc(100% - ${2 * SPACING.default}%)`
             : "60%",
-          height: "55%",
+          height: isMobileScreen ? "45%" : "55%",
         }}
       >
         <SectionHeader

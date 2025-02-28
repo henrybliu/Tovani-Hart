@@ -1,4 +1,12 @@
-const APPROACH_CONSTANTS = {
+type ApproachConstantsProps = {
+  header: string;
+  designProcessSubheader: string;
+  designProcessDescription: string;
+  sustainablePrinciplesSubheader: string;
+  sustainablePrinciplesDescription: string;
+};
+
+const APPROACH_CONSTANTS: ApproachConstantsProps = {
   header: "Our Approach",
   designProcessSubheader: "Design Process",
   designProcessDescription:

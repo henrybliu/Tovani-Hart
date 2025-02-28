@@ -1,4 +1,11 @@
-const SERVICES_CONSTANTS = {
+type ServiceConstantsProps = {
+  backgroundImage: string;
+  header: string;
+  description: string;
+  pillars: string[];
+};
+
+const SERVICES_CONSTANTS: ServiceConstantsProps = {
   backgroundImage: "bg2.jpg",
   header: "Services",
   description:

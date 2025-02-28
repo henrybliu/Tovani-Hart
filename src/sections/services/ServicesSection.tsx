@@ -28,7 +28,7 @@ const ServicesContent = () => {
       style={{
         maxWidth: isMobileScreen ? "100%" : "",
         zIndex: 5,
-        position: "absolute",
+        position: "relative",
         top: 0,
       }}
     >

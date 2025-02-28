@@ -1,4 +1,14 @@
-export const CONTACT_CONSTANTS = {
+type ContactConstantsProps = {
+  header: string;
+  companyName: string;
+  streetAddress: string;
+  cityStateZip: string;
+  phoneNumber: string;
+  emailAddress: string;
+  mapImage: string;
+};
+
+export const CONTACT_CONSTANTS: ContactConstantsProps = {
   header: "Contact Us",
   companyName: "Tovani Hart",
   streetAddress: "609 A Columbia Street SW",
