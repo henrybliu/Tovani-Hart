@@ -56,7 +56,7 @@ const BackButton = ({
         setShowModal((prev) => !prev);
       }}
     >
-      <WestIcon style={{ color: COLORS.black }} /> &nbsp;{" "}
+      <WestIcon style={{ color: COLORS.black }} /> &nbsp;
       <BackLinkText>Back</BackLinkText>
     </BackLinkContainer>
   );
@@ -74,7 +74,6 @@ const BackLinkText = styled("div")({
   fontWeight: TYPOGRAPHY.fontWeight.bolder,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
   textDecoration: "underline",
-  marginRight: SPACING.small,
   color: COLORS.black,
 });
 
@@ -91,8 +90,8 @@ const Background = styled("div")({
   alignItems: "center",
 });
 
-const ModalContainer = styled("div")<{ isMobileScreen?: boolean }>(
-  ({ isMobileScreen }) => ({
+const ModalContainer = styled("div")(
+  ({ isMobileScreen }: { isMobileScreen: boolean }) => ({
     height: "85vh",
     width: isMobileScreen ? "90vw" : "60vw",
     backgroundColor: COLORS.white,

@@ -5,8 +5,17 @@ import SPACING from "../assets/Spacing";
 
 const logoImage = require("../assets/images/Tovani_Hart_Architects_Logo.png");
 
-export const LogoText = ({ style }: { style?: React.CSSProperties }) => {
-  return <TextContainer style={{ ...style }}>Tovani Hart</TextContainer>;
+type LogoTextProps = {
+  style?: React.CSSProperties;
+  scale?: number;
+};
+
+export const LogoText = ({ style, scale }: LogoTextProps) => {
+  return (
+    <TextContainer style={{ ...style }} scale={scale}>
+      Tovani Hart
+    </TextContainer>
+  );
 };
 
 const Logo = ({ style }: { style?: React.CSSProperties }) => {
@@ -33,12 +42,16 @@ const LogoContainer = styled("div")({
   marginBottom: "100px",
 });
 
-const TextContainer = styled("div")({
-  fontSize: TYPOGRAPHY.fontSize.logo,
-  fontWeight: TYPOGRAPHY.fontWeight.bold,
-  textTransform: "uppercase",
-  letterSpacing: "4.1px",
-  whiteSpace: "nowrap",
-  marginTop: `${SPACING.large}px`,
-});
+const TextContainer = styled("div")(
+  ({ scale }: { scale: number | undefined }) => ({
+    fontSize: scale
+      ? `${parseFloat(TYPOGRAPHY.fontSize.logo) * scale}px`
+      : TYPOGRAPHY.fontSize.logo,
+    fontWeight: TYPOGRAPHY.fontWeight.bold,
+    textTransform: "uppercase",
+    letterSpacing: scale ? `${parseFloat("4.1px") * scale}px` : "4.1px",
+    whiteSpace: "nowrap",
+    marginTop: `${SPACING.large}px`,
+  })
+);
 export default Logo;

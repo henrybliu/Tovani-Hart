@@ -1,20 +1,36 @@
-import { ProjectProps } from "./PROJECTS_CONSTANTS";
+import { styled } from "@mui/material";
 
-// TODO: adjust this to just be a project image
-const ProjectTile = ({ project }: { project: ProjectProps }) => {
-  const name = project.name;
-  const location = project.location;
-  const description = project.description;
-  //   const coverImage = project.coverImage;
-  //   const otherImages = project.otherImages;
+type ProjectTileProps = {
+  projectImage: string;
+  tileSize: number;
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
+  ) => void;
+};
 
+const ProjectTile = ({ projectImage, tileSize, onClick }: ProjectTileProps) => {
+  const tileImage = require(`../../assets/images/${projectImage}`);
   return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{location}</h2>
-      <h3>{description}</h3>
-    </div>
+    <TileContainer onClick={onClick}>
+      <img
+        src={tileImage}
+        alt="project"
+        style={{ height: `${tileSize}px`, width: `${tileSize}px` }}
+      />
+    </TileContainer>
   );
 };
+
+const TileContainer = styled("div")({
+  filter: "grayscale(100%)",
+  transition: "filter 0.3s ease-in-out",
+  cursor: "pointer",
+  "&:hover": {
+    filter: "grayscale(0%)",
+  },
+  "&:active": {
+    filter: "grayscale(0%)",
+  },
+});
 
 export default ProjectTile;

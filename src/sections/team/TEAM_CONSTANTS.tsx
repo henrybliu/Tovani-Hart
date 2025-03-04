@@ -16,11 +16,16 @@ export type EmployeeProps = {
 };
 
 /*
-For employees with multiple paragraphs in their biography, use the following example:
+NOTE:
 
-biography: "paragraph 1 \n paragraph 2 \n paragraph 3"
+For biographies:
+- use \n to end a paragraph (this shouldn't be added for the last paragraph)
+  - example:
+    - "paragraph 1 \n paragraph 2 \n paragraph 3"
 
-note: add a \n after each paragraph
+- use \u2022 for bullet points and add a \n after the last bullet point
+  - example:
+    - "\u2022 bullet point 1 \u2022 bullet point 2 \u2022 bullet point 3 \n"
 */
 export const EMPLOYEE_CONSTANTS: EmployeeProps[] = [
   {

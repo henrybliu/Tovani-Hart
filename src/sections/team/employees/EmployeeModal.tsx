@@ -1,6 +1,7 @@
 import Modal from "../../../components/Modal";
 import { styled } from "@mui/material";
-import TYPOGRAPHY, { Paragraph } from "../../../assets/Typography";
+import TYPOGRAPHY from "../../../assets/Typography";
+import formatDescription from "../../../utils/formatDescription";
 
 type EmployeeModalProps = {
   name: string;
@@ -15,18 +16,11 @@ const EmployeeModal = ({
   biography,
   setShowModal,
 }: EmployeeModalProps) => {
-  const paragraphs = biography.split("\n");
-
   return (
     <Modal setShowModal={setShowModal}>
       <Name>{name}</Name>
       <Title>{title}</Title>
-      {paragraphs.map((paragraph, index) => (
-        <>
-          <Paragraph key={index}>{paragraph}</Paragraph>
-          {index !== paragraphs.length - 1 && <br />}
-        </>
-      ))}
+      {formatDescription(biography)}
     </Modal>
   );
 };

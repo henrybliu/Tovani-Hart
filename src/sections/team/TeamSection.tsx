@@ -9,6 +9,7 @@ import EmployeeTile from "./employees/EmployeeTile";
 import SPACING, { MOBILE_NAVBAR_SCREEN_WIDTH } from "../../assets/Spacing";
 import useScreenWidth from "../../utils/useScreenWidth";
 import EmployeeModal from "./employees/EmployeeModal";
+import useMobileScreen from "../../utils/useMobileScreen";
 
 const { backgroundImage, header } = TEAM_CONSTANTS;
 const employees = EMPLOYEE_CONSTANTS;
@@ -68,6 +69,8 @@ const TeamContent = () => {
     setEmployeeInfo({ name, title, biography });
   };
 
+  const isMobileScreen = useMobileScreen();
+
   return (
     <>
       {showEmployeeModal && (
@@ -81,7 +84,10 @@ const TeamContent = () => {
         }}
       >
         <SectionHeader>{header}</SectionHeader>
-        <EmployeeTileContainer tileSize={tileSize}>
+        <EmployeeTileContainer
+          tileSize={tileSize}
+          isMobileScreen={isMobileScreen}
+        >
           {employees.map((employee, index) => {
             return (
               <EmployeeTile
@@ -98,14 +104,19 @@ const TeamContent = () => {
   );
 };
 
+type EmployeeTileContainerProps = {
+  tileSize: number;
+  isMobileScreen: boolean;
+};
+
 const EmployeeTileContainer = styled("div")(
-  ({ tileSize }: { tileSize: number }) => ({
+  ({ tileSize, isMobileScreen }: EmployeeTileContainerProps) => ({
     width: "100%",
     display: "grid",
     gridTemplateColumns: `repeat(auto-fill, ${tileSize}px)`,
     gap: `${4 * SPACING.default}px`,
-    marginBottom: `${10 * SPACING.default}px`,
-    marginRight: `${10 * SPACING.default}px`,
+    marginBottom: `${(isMobileScreen ? 5 : 10) * SPACING.default}px`,
+    marginRight: `${(isMobileScreen ? 5 : 10) * SPACING.default}px`,
   })
 );
 
