@@ -9,6 +9,8 @@ import SPACING from "../../../assets/Spacing";
 import TYPOGRAPHY from "../../../assets/Typography";
 import formatDescription from "../../../utils/formatDescription";
 import useMobileScreen from "../../../utils/useMobileScreen";
+import { isImageFile, isVideoFile } from "../../../utils/fileType";
+import COLORS from "../../../assets/Colors";
 
 type ProjectPageProps = {
   name: string;
@@ -70,6 +72,7 @@ const ProjectContent = ({
           <Medium
             key={index}
             medium={medium}
+            isMobileScreen={isMobileScreen}
             style={{
               marginBottom:
                 index !== media.length - 1 ? `${SPACING.default}px` : "0px",
@@ -84,14 +87,12 @@ const ProjectContent = ({
 type MediumProps = {
   medium: string;
   style?: React.CSSProperties;
+  isMobileScreen: boolean;
 };
-const Medium = ({ medium, style }: MediumProps) => {
-  const isVimeoLink = medium.includes("vimeo.com");
-
-  if (isVimeoLink) {
-    return <></>;
-  } else {
+const Medium = ({ medium, style, isMobileScreen }: MediumProps) => {
+  if (isImageFile(medium)) {
     const image = require(`../../../assets/images/${medium}`);
+
     return (
       <img
         src={image}
@@ -102,6 +103,41 @@ const Medium = ({ medium, style }: MediumProps) => {
           marginTop: `${SPACING.default}px`,
           ...style,
         }}
+      />
+    );
+  } else if (isVideoFile(medium)) {
+    const video = require(`../../../assets/images/${medium}`);
+
+    return (
+      <video
+        src={video}
+        style={{
+          width: "100%",
+          height: "auto",
+          marginTop: `${SPACING.default}px`,
+          ...style,
+          backgroundColor: COLORS.black,
+        }}
+        controls
+        loop
+        muted
+        autoPlay={!isMobileScreen}
+      />
+    );
+  } else {
+    const videoURL = medium;
+
+    return (
+      <iframe
+        src={videoURL}
+        style={{
+          width: "100%",
+          height: "auto",
+          minHeight: "350px",
+          marginTop: `${SPACING.default}px`,
+          ...style,
+        }}
+        title="Project Video"
       />
     );
   }

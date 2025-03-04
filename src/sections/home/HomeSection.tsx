@@ -134,12 +134,32 @@ const HiringLinkContainer = styled("div")({
   flexDirection: "row",
   alignItems: "center",
   cursor: "pointer",
+  width: "fit-content",
+  transition: "transform 0.3s ease-in-out",
+  paddingLeft: "3px",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "-2px",
+    width: "0%",
+    height: "2px",
+    backgroundColor: COLORS.white,
+    transition: "width 0.3s ease-in-out",
+  },
+
+  "&:hover": {
+    transform: "scale(1.05)",
+  },
+
+  "&:hover::after": {
+    width: "100%",
+  },
 });
 
 const HiringLinkText = styled("div")({
   fontWeight: TYPOGRAPHY.fontWeight.bolder,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
-  textDecoration: "underline",
   marginRight: SPACING.small,
 });
 

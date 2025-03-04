@@ -26,13 +26,33 @@ const ButtonContainer = styled("div")({
   alignItems: "center",
   cursor: "pointer",
   whiteSpace: "nowrap",
+  transition: "transform 0.3s ease-in-out",
+  paddingRight: "3px",
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "-2px",
+    width: "0%",
+    height: "2px",
+    backgroundColor: COLORS.white,
+    transition: "width 0.3s ease-in-out",
+  },
+
+  "&:hover": {
+    transform: "scale(1.05)",
+  },
+
+  "&:hover::after": {
+    width: "100%",
+  },
 });
 
 const ButtonText = styled("div")({
   fontWeight: TYPOGRAPHY.fontWeight.bolder,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
   color: COLORS.white,
-  textDecoration: "underline",
 });
 
 export const ProjectPageBackButton = () => {

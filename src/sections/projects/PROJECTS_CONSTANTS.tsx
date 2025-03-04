@@ -26,9 +26,11 @@ For descriptions:
   - example:
     - "\u2022 bullet point 1 \u2022 bullet point 2 \u2022 bullet point 3 \n"
 
-
 For other media:
-- accepts image file names and URLs to Vimeo videos
+- accepts image files, videos, and video links
+- for Vimeo and YouTube, ensure that they are of the following form:
+ "https://www.youtube.com/embed/dQw4w9WgXcQ";  // YouTube
+ "https://player.vimeo.com/video/123456789";   // Vinmeo
 */
 export const PROJECTS_INFO: ProjectProps[] = [
   {
@@ -208,7 +210,10 @@ export const PROJECTS_INFO: ProjectProps[] = [
     coverImage: "talc-285x285_web.jpg",
     media: [
       "talc-rendering_web.jpg",
-      "https://vimeo.com/425584314",
+      // "https://vimeo.com/425584314",
+      "https://player.vimeo.com/video/347119375",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      // "TALC Building Video.mp4",
       "talc-entry_web.jpg",
       "talc-rendering_web.jpg",
       "talc-teaching-space_web.jpg",

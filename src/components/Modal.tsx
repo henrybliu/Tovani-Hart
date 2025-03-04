@@ -24,13 +24,17 @@ const Modal = ({ children, setShowModal }: ModalProps) => {
           }}
         >
           <CloseIcon
-            style={{
+            sx={{
               fontSize: "50px",
               paddingTop: `${SPACING.extraLarge}px`,
               paddingRight: `${SPACING.extraLarge}px`,
               paddingBottom: `${SPACING.default}px`,
               cursor: "pointer",
               color: COLORS.black,
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.1)",
+              },
             }}
             onClick={() => {
               setShowModal((prev) => !prev);
@@ -68,12 +72,33 @@ const BackLinkContainer = styled("div")({
   alignItems: "center",
   cursor: "pointer",
   margin: `${SPACING.extraLarge}px 0px`,
+  width: "fit-content",
+  transition: "transform 0.3s ease-in-out",
+  paddingRight: "3px",
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "-2px",
+    width: "0%",
+    height: "2px",
+    backgroundColor: COLORS.black,
+    transition: "width 0.3s ease-in-out",
+  },
+
+  "&:hover": {
+    transform: "scale(1.1)",
+  },
+
+  "&:hover::after": {
+    width: "100%",
+  },
 });
 
 const BackLinkText = styled("div")({
   fontWeight: TYPOGRAPHY.fontWeight.bolder,
   fontSize: TYPOGRAPHY.fontSize.paragraph,
-  textDecoration: "underline",
   color: COLORS.black,
 });
 

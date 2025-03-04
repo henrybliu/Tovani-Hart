@@ -191,11 +191,30 @@ const DesktopLink = styled("a")({
   textDecoration: "none",
   textTransform: "uppercase",
   margin: `${0.5 * SPACING.default}px 0px`,
+  padding: "0px 3px",
   fontWeight: TYPOGRAPHY.fontWeight.bolder,
   cursor: "pointer",
+  position: "relative",
+  display: "inline-block",
+  transition: "transform 0.3s ease-in-out",
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "-2px",
+    width: "0%",
+    height: "2px",
+    backgroundColor: COLORS.white,
+    transition: "width 0.3s ease-in-out",
+  },
 
   "&:hover": {
-    textDecoration: "underline",
+    transform: "scale(1.1)",
+  },
+
+  "&:hover::after": {
+    width: "100%",
   },
 });
 

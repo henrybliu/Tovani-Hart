@@ -23,13 +23,15 @@ const ProjectTile = ({ projectImage, tileSize, onClick }: ProjectTileProps) => {
 
 const TileContainer = styled("div")({
   filter: "grayscale(100%)",
-  transition: "filter 0.3s ease-in-out",
+  transition: "filter 0.3s ease-in-out, transform 0.3s ease-in-out",
   cursor: "pointer",
   "&:hover": {
     filter: "grayscale(0%)",
+    transform: "scale(1.05)",
   },
   "&:active": {
     filter: "grayscale(0%)",
+    transform: "scale(1.05)",
   },
 });
 
