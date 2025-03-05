@@ -6,19 +6,19 @@ import HomeSection from "./sections/home/HomeSection";
 import ProjectsSection from "./sections/projects/ProjectsSection";
 import ServicesSection from "./sections/services/ServicesSection";
 import TeamSection from "./sections/team/TeamSection";
-import COLORS from "./assets/Colors";
 import { useEffect } from "react";
 import "./assets/fonts/font.css";
+import "./index.css";
 import { PROJECTS_INFO } from "./sections/projects/PROJECTS_CONSTANTS";
 import createRoute from "./utils/createRoute";
 import ProjectPage from "./sections/projects/projectPage/ProjectPage";
 
 function App() {
   useEffect(() => {
-    document.body.style.backgroundColor = COLORS.navy;
-    document.body.style.color = COLORS.white;
-    document.body.style.fontFamily = "CustomFont, Lato";
-  }, []);
+    document.fonts.ready.then(() => {
+      document.documentElement.classList.add("fonts-loaded");
+    });
+  });
 
   return (
     <Router>

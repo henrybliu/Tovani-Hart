@@ -1,0 +1,32 @@
+.content-container {
+  min-height: 100vh;
+}
+
+html {
+  visibility: hidden;
+}
+
+html.fonts-loaded {
+  visibility: visible;
+}
+
+img,
+video {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+body {
+  background-color: #1f2428;
+  color: #ffffff;
+  font-family: "CustomFont", Lato, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-y: scroll;
+}
