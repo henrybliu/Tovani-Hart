@@ -5,6 +5,7 @@ import COLORS from "../assets/Colors";
 import WestIcon from "@mui/icons-material/West";
 import TYPOGRAPHY from "../assets/Typography";
 import useMobileScreen from "../utils/useMobileScreen";
+import FadeIn from "./FadeIn";
 
 type ModalProps = {
   children: React.ReactNode;
@@ -15,37 +16,50 @@ const Modal = ({ children, setShowModal }: ModalProps) => {
   const isMobileScreen = useMobileScreen();
 
   return (
-    <Background>
-      <ModalContainer isMobileScreen={isMobileScreen}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <CloseIcon
-            sx={{
-              fontSize: "50px",
-              paddingTop: `${SPACING.extraLarge}px`,
-              paddingRight: `${SPACING.extraLarge}px`,
-              paddingBottom: `${SPACING.default}px`,
-              cursor: "pointer",
-              color: COLORS.black,
-              transition: "transform 0.3s ease-in-out",
-              "&:hover": {
-                transform: "scale(1.1)",
-              },
+    <FadeIn
+      slideIn={false}
+      style={{
+        position: "fixed",
+        zIndex: 9999,
+        top: 0,
+        left: 0,
+        height: "100vh",
+        width: "100vw",
+        transition: "opacity 300ms ease-in-out",
+      }}
+    >
+      <Background>
+        <ModalContainer isMobileScreen={isMobileScreen}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
             }}
-            onClick={() => {
-              setShowModal((prev) => !prev);
-            }}
-          />
-        </div>
-        <ModalContent>
-          {children} <BackButton setShowModal={setShowModal} />
-        </ModalContent>
-      </ModalContainer>
-    </Background>
+          >
+            <CloseIcon
+              sx={{
+                fontSize: "50px",
+                paddingTop: `${SPACING.extraLarge}px`,
+                paddingRight: `${SPACING.extraLarge}px`,
+                paddingBottom: `${SPACING.default}px`,
+                cursor: "pointer",
+                color: COLORS.black,
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.1)",
+                },
+              }}
+              onClick={() => {
+                setShowModal((prev) => !prev);
+              }}
+            />
+          </div>
+          <ModalContent>
+            {children} <BackButton setShowModal={setShowModal} />
+          </ModalContent>
+        </ModalContainer>
+      </Background>
+    </FadeIn>
   );
 };
 

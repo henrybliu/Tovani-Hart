@@ -8,6 +8,7 @@ import TYPOGRAPHY from "../../assets/Typography";
 import SPACING from "../../assets/Spacing";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import CloseIcon from "@mui/icons-material/Close";
+import FadeIn from "../FadeIn";
 
 type HandleSmoothScrollProps = {
   event: React.MouseEvent<HTMLAnchorElement>;
@@ -105,23 +106,39 @@ const MenuModal = ({
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <MenuModalContainer>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <CloseIcon
-          style={{
-            fontSize: "50px",
-            paddingTop: `${SPACING.extraLarge}`,
-            paddingRight: `${SPACING.extraLarge}px`,
-            paddingBottom: `${SPACING.default}px`,
-            cursor: "pointer",
-          }}
-          onClick={() => {
-            setIsMenuOpen((prev) => !prev);
-          }}
-        />
-      </div>
-      <MobileNavBarLinks setIsMenuOpen={setIsMenuOpen} />
-    </MenuModalContainer>
+    <FadeIn
+      slideIn={false}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        height: "100vh",
+        width: "100vw",
+        transition: "opacity 300ms ease-in-out",
+      }}
+    >
+      <MenuModalContainer>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <CloseIcon
+            sx={{
+              fontSize: "50px",
+              paddingTop: `${SPACING.extraLarge}px`,
+              paddingRight: `${SPACING.extraLarge}px`,
+              paddingBottom: `${SPACING.default}px`,
+              cursor: "pointer",
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.1)",
+              },
+            }}
+            onClick={() => {
+              setIsMenuOpen((prev) => !prev);
+            }}
+          />
+        </div>
+        <MobileNavBarLinks setIsMenuOpen={setIsMenuOpen} />
+      </MenuModalContainer>
+    </FadeIn>
   );
 };
 

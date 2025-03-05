@@ -28,7 +28,7 @@ const ProjectPage = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  // TODO: handle vimeo video links
+
   return (
     <Page>
       <PageContainer>
