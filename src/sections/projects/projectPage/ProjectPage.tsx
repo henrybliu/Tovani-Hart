@@ -11,6 +11,7 @@ import formatDescription from "../../../utils/formatDescription";
 import useMobileScreen from "../../../utils/useMobileScreen";
 import { isImageFile, isVideoFile } from "../../../utils/fileType";
 import COLORS from "../../../assets/Colors";
+import FadeIn from "../../../components/FadeIn";
 
 type ProjectPageProps = {
   name: string;
@@ -63,23 +64,37 @@ const ProjectContent = ({
   return (
     <ProjectContentContainer isMobileLayout={isMobileScreen}>
       <ProjectInfoContainer isMobileLayout={isMobileScreen}>
-        <Title>{name}</Title>
-        <Location>{location}</Location>
-        <Description> {formatDescription(description)}</Description>
+        <FadeIn>
+          <Title>{name}</Title>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <Location>{location}</Location>
+        </FadeIn>
+        <FadeIn delay={200}>
+          <Description> {formatDescription(description)}</Description>
+        </FadeIn>
       </ProjectInfoContainer>
-      <ProjectImagesContainer isMobileLayout={isMobileScreen}>
-        {media.map((medium, index) => (
-          <Medium
-            key={index}
-            medium={medium}
-            isMobileScreen={isMobileScreen}
-            style={{
-              marginBottom:
-                index !== media.length - 1 ? `${SPACING.default}px` : "0px",
-            }}
-          />
-        ))}
-      </ProjectImagesContainer>
+      <FadeIn
+        slideIn={false}
+        style={{
+          width: isMobileScreen ? "100%" : "55%",
+        }}
+        delay={isMobileScreen ? 300 : 0}
+      >
+        <ProjectImagesContainer isMobileLayout={isMobileScreen}>
+          {media.map((medium, index) => (
+            <Medium
+              key={index}
+              medium={medium}
+              isMobileScreen={isMobileScreen}
+              style={{
+                marginBottom:
+                  index !== media.length - 1 ? `${SPACING.default}px` : "0px",
+              }}
+            />
+          ))}
+        </ProjectImagesContainer>
+      </FadeIn>
     </ProjectContentContainer>
   );
 };
@@ -184,7 +199,6 @@ const ProjectImagesContainer = styled("div")(
   ({ isMobileLayout }: { isMobileLayout: boolean }) => ({
     display: "flex",
     flexDirection: "column",
-    width: isMobileLayout ? "100%" : "55%",
     marginTop: isMobileLayout ? `${SPACING.default}px` : "0px",
   })
 );

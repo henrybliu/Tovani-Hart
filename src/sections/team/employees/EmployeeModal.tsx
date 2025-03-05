@@ -2,6 +2,7 @@ import Modal from "../../../components/Modal";
 import { styled } from "@mui/material";
 import TYPOGRAPHY from "../../../assets/Typography";
 import formatDescription from "../../../utils/formatDescription";
+import FadeIn from "../../../components/FadeIn";
 
 type EmployeeModalProps = {
   name: string;
@@ -18,9 +19,13 @@ const EmployeeModal = ({
 }: EmployeeModalProps) => {
   return (
     <Modal setShowModal={setShowModal}>
-      <Name>{name}</Name>
-      <Title>{title}</Title>
-      {formatDescription(biography)}
+      <FadeIn>
+        <Name>{name}</Name>
+      </FadeIn>
+      <FadeIn delay={100}>
+        <Title>{title}</Title>
+      </FadeIn>
+      <FadeIn delay={200}> {formatDescription(biography)}</FadeIn>
     </Modal>
   );
 };
