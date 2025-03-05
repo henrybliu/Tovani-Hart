@@ -17,74 +17,80 @@ const FadeIn = ({
   style,
 }: FadeInProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const domRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const elementRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const currentRef = domRef.current;
+    const currentElement = elementRef.current;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const timeoutId = setTimeout(() => {
-              setIsVisible(true);
-            }, delay);
+    // Use requestAnimationFrame to minimize layout thrashing
+    const createObserver = () => {
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Use requestAnimationFrame to reduce performance impact
+              requestAnimationFrame(() => {
+                setIsVisible(true);
+                // Disconnect after first intersection
+                observerRef.current?.unobserve(entry.target);
+              });
+            }
+          });
+        },
+        {
+          threshold: threshold,
+          rootMargin: "0px",
+        }
+      );
 
-            return () => clearTimeout(timeoutId);
-          }
-        });
-      },
-      {
-        threshold: threshold, // Configurable threshold
-        rootMargin: "0px 0px 100px 0px", // Slight offset to trigger earlier
+      if (currentElement) {
+        observerRef.current.observe(currentElement);
       }
-    );
+    };
 
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    // Defer observer creation to next event loop
+    const timeoutId = setTimeout(createObserver, delay);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      clearTimeout(timeoutId);
+      if (observerRef.current && currentElement) {
+        observerRef.current.unobserve(currentElement);
+        observerRef.current.disconnect();
       }
     };
   }, [delay, threshold]);
 
   return (
     <FadeInContainer
-      slideIn={slideIn}
-      isVisible={isVisible}
-      delay={delay}
-      ref={domRef}
-      style={{ ...style }}
+      ref={elementRef}
+      $slideIn={slideIn}
+      $isVisible={isVisible}
+      $delay={delay}
+      style={style}
     >
       {children}
     </FadeInContainer>
   );
 };
 
-type FadeInContainerProps = {
-  slideIn: boolean;
-  isVisible: boolean;
-  delay: number;
-};
+const FadeInContainer = styled("div")<{
+  $slideIn: boolean;
+  $isVisible: boolean;
+  $delay: number;
+}>(({ $slideIn, $isVisible, $delay }) => ({
+  opacity: 0,
+  transform: $slideIn ? "translateY(50px)" : "none",
+  transition: `
+    opacity 900ms ease-in-out ${$delay}ms, 
+    transform 400ms ease-in-out ${$delay}ms
+  `,
+  willChange: "opacity, transform",
 
-const FadeInContainer = styled("div")(
-  ({ slideIn, isVisible, delay }: FadeInContainerProps) => ({
-    opacity: 0,
-    transform: slideIn ? "translateY(20vh)" : "none",
-    transition: `
-      opacity 900ms ease-in-out ${delay}ms, 
-      transform 400ms ease-in-out ${delay}ms
-    `,
-    willChange: "opacity, transform",
-
-    ...(isVisible && {
-      opacity: 1,
-      transform: "none",
-    }),
-  })
-);
+  ...($isVisible && {
+    opacity: 1,
+    transform: "none",
+  }),
+}));
 
 export default FadeIn;
