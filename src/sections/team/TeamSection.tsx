@@ -10,6 +10,7 @@ import SPACING, { MOBILE_NAVBAR_SCREEN_WIDTH } from "../../assets/Spacing";
 import useScreenWidth from "../../utils/useScreenWidth";
 import EmployeeModal from "./employees/EmployeeModal";
 import useMobileScreen from "../../utils/useMobileScreen";
+import FadeIn from "../../components/FadeIn";
 
 const { backgroundImage, header } = TEAM_CONSTANTS;
 const employees = EMPLOYEE_CONSTANTS;
@@ -83,22 +84,26 @@ const TeamContent = () => {
           position: "relative",
         }}
       >
-        <SectionHeader>{header}</SectionHeader>
-        <EmployeeTileContainer
-          tileSize={tileSize}
-          isMobileScreen={isMobileScreen}
-        >
-          {employees.map((employee, index) => {
-            return (
-              <EmployeeTile
-                key={index}
-                {...employee}
-                tileSize={tileSize}
-                onClick={() => handleOpenEmployeeModal(employee)}
-              />
-            );
-          })}
-        </EmployeeTileContainer>
+        <FadeIn>
+          <SectionHeader>{header}</SectionHeader>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <EmployeeTileContainer
+            tileSize={tileSize}
+            isMobileScreen={isMobileScreen}
+          >
+            {employees.map((employee, index) => {
+              return (
+                <EmployeeTile
+                  key={index}
+                  {...employee}
+                  tileSize={tileSize}
+                  onClick={() => handleOpenEmployeeModal(employee)}
+                />
+              );
+            })}
+          </EmployeeTileContainer>
+        </FadeIn>
       </SectionContent>
     </>
   );

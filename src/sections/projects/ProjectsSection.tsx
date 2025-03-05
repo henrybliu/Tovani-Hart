@@ -12,6 +12,7 @@ import createRoute from "../../utils/createRoute";
 import useScreenWidth from "../../utils/useScreenWidth";
 import { MOBILE_NAVBAR_SCREEN_WIDTH } from "../../assets/Spacing";
 import useMobileScreen from "../../utils/useMobileScreen";
+import FadeIn from "../../components/FadeIn";
 
 const ProjectsSection = ({ id }: { id: string }) => {
   return (
@@ -84,26 +85,29 @@ const ProjectsContent = () => {
         position: "relative",
       }}
     >
-      <SectionHeader>{PROJECTS_CONSTANTS.header}</SectionHeader>
-
-      <ProjectsTileContainer
-        tileSize={tileSize}
-        isMobileScreen={isMobileScreen}
-      >
-        {PROJECTS_INFO.map((project, index) => {
-          const projectName = project.name;
-          const projectRoute = createRoute(projectName);
-          const projectCoverImage = project.coverImage;
-          return (
-            <ProjectTile
-              key={index}
-              projectImage={projectCoverImage}
-              tileSize={tileSize}
-              onClick={(event) => handleClick(event, projectRoute)}
-            />
-          );
-        })}
-      </ProjectsTileContainer>
+      <FadeIn>
+        <SectionHeader>{PROJECTS_CONSTANTS.header}</SectionHeader>
+      </FadeIn>
+      <FadeIn delay={100}>
+        <ProjectsTileContainer
+          tileSize={tileSize}
+          isMobileScreen={isMobileScreen}
+        >
+          {PROJECTS_INFO.map((project, index) => {
+            const projectName = project.name;
+            const projectRoute = createRoute(projectName);
+            const projectCoverImage = project.coverImage;
+            return (
+              <ProjectTile
+                key={index}
+                projectImage={projectCoverImage}
+                tileSize={tileSize}
+                onClick={(event) => handleClick(event, projectRoute)}
+              />
+            );
+          })}
+        </ProjectsTileContainer>
+      </FadeIn>
     </SectionContent>
   );
 };
@@ -112,6 +116,7 @@ type ProjectsTileContainerProps = {
   tileSize: number;
   isMobileScreen: boolean;
 };
+
 const ProjectsTileContainer = styled("div")(
   ({ tileSize, isMobileScreen }: ProjectsTileContainerProps) => ({
     width: "100%",

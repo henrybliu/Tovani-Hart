@@ -7,6 +7,7 @@ import COLORS from "../../assets/Colors";
 import SPACING from "../../assets/Spacing";
 import SectionContent from "../../components/SectionContent";
 import useMobileScreen from "../../utils/useMobileScreen";
+import FadeIn from "../../components/FadeIn";
 
 const {
   header,
@@ -30,37 +31,41 @@ const ContactSection = ({ id }: { id: string }) => {
           maxWidth: isMobileScreen ? "100%" : "50%",
         }}
       >
-        <SectionHeader>{header}</SectionHeader>
-        <img
-          src={mapFilePath}
-          alt="map"
-          style={{
-            width: "100%",
-          }}
-        />
-
-        <Paragraph>
-          <Logo>{companyName}</Logo>
-          {streetAddress} <br />
-          {cityStateZip} <br />
-          <a
-            href={`tel:+${phoneNumber}`}
+        <FadeIn>
+          <SectionHeader>{header}</SectionHeader>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <img
+            src={mapFilePath}
+            alt="map"
             style={{
-              textDecoration: "none",
-              color: COLORS.white,
-              cursor: "pointer",
+              width: "100%",
             }}
-          >
-            {phoneNumber}
-          </a>
-          <br />
-          <a
-            href={`mailto:${emailAddress}`}
-            style={{ textDecoration: "none", color: COLORS.white }}
-          >
-            {emailAddress}
-          </a>
-        </Paragraph>
+          />
+
+          <Paragraph>
+            <Logo>{companyName}</Logo>
+            {streetAddress} <br />
+            {cityStateZip} <br />
+            <a
+              href={`tel:+${phoneNumber}`}
+              style={{
+                textDecoration: "none",
+                color: COLORS.white,
+                cursor: "pointer",
+              }}
+            >
+              {phoneNumber}
+            </a>
+            <br />
+            <a
+              href={`mailto:${emailAddress}`}
+              style={{ textDecoration: "none", color: COLORS.white }}
+            >
+              {emailAddress}
+            </a>
+          </Paragraph>
+        </FadeIn>
       </SectionContent>
     </Section>
   );

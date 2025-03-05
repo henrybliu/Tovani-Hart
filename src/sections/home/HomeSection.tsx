@@ -12,6 +12,7 @@ import SectionContent from "../../components/SectionContent";
 import Logo from "../../components/Logo";
 import useMobileScreen from "../../utils/useMobileScreen";
 import HiringModal from "./HiringModal";
+import FadeIn from "../../components/FadeIn";
 
 const {
   backgroundImage,
@@ -85,28 +86,32 @@ const HomeContent = ({
           height: isMobileScreen ? "45%" : "55%",
         }}
       >
-        <SectionHeader
-          style={{
-            marginTop: isMobileScreen ? `${SPACING.default}px` : "",
-          }}
-        >
-          {header}
-        </SectionHeader>
-        <Paragraph>
-          {sendResumeText}{" "}
-          <a
-            href={`mailto:${emailAddress}`}
-            style={{ textDecoration: "none", color: COLORS.white }}
+        <FadeIn>
+          <SectionHeader
+            style={{
+              marginTop: isMobileScreen ? `${SPACING.default}px` : "",
+            }}
           >
-            {emailAddress}
-          </a>
-          <br />
-          {sendResumeAnywayText}
-        </Paragraph>
-        <Paragraph style={{ padding: `${SPACING.large}px 0px` }}>
-          {hiringText}
-        </Paragraph>
-        <HiringLink setShowModal={setShowModal} />
+            {header}
+          </SectionHeader>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <Paragraph>
+            {sendResumeText}{" "}
+            <a
+              href={`mailto:${emailAddress}`}
+              style={{ textDecoration: "none", color: COLORS.white }}
+            >
+              {emailAddress}
+            </a>
+            <br />
+            {sendResumeAnywayText}
+          </Paragraph>
+          <Paragraph style={{ padding: `${SPACING.large}px 0px` }}>
+            {hiringText}
+          </Paragraph>
+          <HiringLink setShowModal={setShowModal} />
+        </FadeIn>
       </SectionContent>
     </div>
   );

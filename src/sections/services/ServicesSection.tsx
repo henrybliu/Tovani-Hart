@@ -8,6 +8,7 @@ import SectionContent from "../../components/SectionContent";
 import SPACING from "../../assets/Spacing";
 import useMobileScreen from "../../utils/useMobileScreen";
 import ParallaxImage from "../../components/ParallaxImage";
+import FadeIn from "../../components/FadeIn";
 
 const { backgroundImage, header, description, pillars } = SERVICES_CONSTANTS;
 
@@ -32,17 +33,21 @@ const ServicesContent = () => {
         top: 0,
       }}
     >
-      <SectionHeader>{header}</SectionHeader>
-      <Paragraph>{description}</Paragraph>
-      <PillarsContainer>
-        {pillars.map((text, index) => (
-          <Pillar
-            key={index}
-            text={text}
-            isLast={index === pillars.length - 1}
-          />
-        ))}
-      </PillarsContainer>
+      <FadeIn>
+        <SectionHeader>{header}</SectionHeader>
+      </FadeIn>
+      <FadeIn delay={100}>
+        <Paragraph>{description}</Paragraph>
+        <PillarsContainer>
+          {pillars.map((text, index) => (
+            <Pillar
+              key={index}
+              text={text}
+              isLast={index === pillars.length - 1}
+            />
+          ))}
+        </PillarsContainer>
+      </FadeIn>
     </SectionContent>
   );
 };
