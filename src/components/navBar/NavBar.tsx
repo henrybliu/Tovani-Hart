@@ -11,7 +11,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FadeIn from "../FadeIn";
 
 type HandleSmoothScrollProps = {
-  event: React.MouseEvent<HTMLAnchorElement>;
+  event: React.MouseEvent<HTMLAnchorElement | HTMLDivElement, MouseEvent>;
   section: string;
   isMobileScreen: boolean;
 };
@@ -56,11 +56,15 @@ const NavBar = () => {
     <>
       {isMobileScreen ? (
         <MobileNavBarContainer>
-          <LogoText style={{ marginTop: "0px" }} />
+          <MobileLogo isMobileScreen={isMobileScreen} />
           <MenuSharpIcon
-            style={{
+            sx={{
               fontSize: "40px",
               cursor: "pointer",
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.1)",
+              },
             }}
             onClick={handleMenuClick}
           />
@@ -79,6 +83,26 @@ const NavBar = () => {
     </>
   );
 };
+
+const MobileLogo = ({ isMobileScreen }: { isMobileScreen: boolean }) => {
+  return (
+    <LogoTextContainer
+      onClick={(e) =>
+        handleSmoothScroll({ event: e, section: "home", isMobileScreen })
+      }
+    >
+      <LogoText style={{ marginTop: "0px" }} />
+    </LogoTextContainer>
+  );
+};
+
+const LogoTextContainer = styled("div")({
+  cursor: "pointer",
+  transition: "transform 0.3s ease-in-out",
+  "&:hover": {
+    transform: "scale(1.05)",
+  },
+});
 
 const DesktopNavBarLinks = () => {
   const isMobileScreen = useMobileScreen();

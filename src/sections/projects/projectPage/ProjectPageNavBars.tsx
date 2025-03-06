@@ -7,6 +7,7 @@ import SPACING from "../../../assets/Spacing";
 import { LogoText } from "../../../components/Logo";
 import useScreenWidth from "../../../utils/useScreenWidth";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ProjectPageTop = () => {
   const screenWidth = useScreenWidth();
@@ -24,11 +25,37 @@ export const ProjectPageTop = () => {
 
   return (
     <NavContainer isTopNavBar>
-      <LogoText style={{ marginTop: "0px" }} scale={logoScale} />
+      <Logo logoScale={logoScale} />
       <ProjectPageBackButton />
     </NavContainer>
   );
 };
+
+const Logo = ({ logoScale }: { logoScale: number }) => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
+  return (
+    <LogoTextContainer onClick={handleBack}>
+      <LogoText style={{ marginTop: "0px" }} scale={logoScale} />
+    </LogoTextContainer>
+  );
+};
+
+const LogoTextContainer = styled("div")({
+  cursor: "pointer",
+  transition: "transform 0.3s ease-in-out",
+  "&:hover": {
+    transform: "scale(1.05)",
+  },
+});
 
 export const ProjectPageBottom = () => {
   return (
