@@ -3,7 +3,7 @@ import Page from "../../../components/Section";
 import { styled } from "@mui/system";
 import {
   ProjectPageTop,
-  ProjectPageBottom,
+  // ProjectPageBottom,
 } from "../projectPage/ProjectPageNavBars";
 import SPACING from "../../../assets/Spacing";
 import TYPOGRAPHY from "../../../assets/Typography";
@@ -40,7 +40,7 @@ const ProjectPage = ({
           description={description}
           media={media}
         />
-        <ProjectPageBottom />
+        {/* <ProjectPageBottom /> */}
       </PageContainer>
     </Page>
   );
@@ -50,6 +50,7 @@ const PageContainer = styled("div")({
   width: `calc(100vw - 2 * ${SPACING.default}%)`,
   marginLeft: `${SPACING.default}%`,
   marginRight: `${SPACING.default}%`,
+  paddingBottom: `${SPACING.extraLarge}px`,
   lineHeight: 1.4,
 });
 
