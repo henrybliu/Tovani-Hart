@@ -35,11 +35,11 @@ const Logo = ({ logoScale = 1 }: { logoScale?: number }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate("/");
-    }
+    // if (window.history.length > 1) {
+    //   navigate(-1);
+    // } else {
+    navigate("/");
+    // }
   };
 
   return (
