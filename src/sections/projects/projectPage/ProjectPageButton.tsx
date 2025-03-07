@@ -67,15 +67,19 @@ export const ProjectPageBackButton = () => {
     setTimeout(() => {
       const element = document.getElementById("projects");
       if (element) {
-        element.scrollIntoView({ behavior: "auto" });
+        const elementRect = element.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
 
-        if (isMobileScreen) {
-          setTimeout(() => {
-            window.scrollBy({ top: -NAVBAR_HEIGHT, behavior: "auto" });
-          }, 5);
-        }
+        const scrollPosition = isMobileScreen
+          ? absoluteElementTop - NAVBAR_HEIGHT
+          : absoluteElementTop;
+
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: "smooth",
+        });
       }
-    }, 5);
+    }, 500);
   };
 
   return (
