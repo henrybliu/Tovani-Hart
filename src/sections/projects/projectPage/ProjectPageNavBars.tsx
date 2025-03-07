@@ -5,28 +5,28 @@ import {
 import { styled } from "@mui/material";
 import SPACING from "../../../assets/Spacing";
 import { LogoText } from "../../../components/Logo";
-// import useScreenWidth from "../../../utils/useScreenWidth";
-// import { useState, useEffect } from "react";
+import useScreenWidth from "../../../utils/useScreenWidth";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ProjectPageTop = () => {
-  // const screenWidth = useScreenWidth();
-  // const [logoScale, setLogoScale] = useState(1);
+  const screenWidth = useScreenWidth();
+  const [logoScale, setLogoScale] = useState(1);
 
-  // useEffect(() => {
-  //   if (screenWidth <= 360) {
-  //     setLogoScale(0.6);
-  //   } else if (screenWidth <= 425) {
-  //     setLogoScale(0.8);
-  //   } else {
-  //     setLogoScale(1);
-  //   }
-  // }, [screenWidth]);
+  useEffect(() => {
+    if (screenWidth <= 360) {
+      setLogoScale(0.6);
+    } else if (screenWidth <= 425) {
+      setLogoScale(0.8);
+    } else {
+      setLogoScale(1);
+    }
+  }, [screenWidth]);
 
   return (
     <NavContainer isTopNavBar>
-      <Logo />
-      {/* <ProjectPageBackButton /> */}
+      <Logo logoScale={logoScale} />
+      <ProjectPageBackButton />
     </NavContainer>
   );
 };
@@ -34,16 +34,12 @@ export const ProjectPageTop = () => {
 const Logo = ({ logoScale = 1 }: { logoScale?: number }) => {
   const navigate = useNavigate();
 
-  const handleBack = () => {
-    // if (window.history.length > 1) {
-    //   navigate(-1);
-    // } else {
-    navigate("/");
-    // }
-  };
-
   return (
-    <LogoTextContainer onClick={handleBack}>
+    <LogoTextContainer
+      onClick={() => {
+        navigate("/");
+      }}
+    >
       <LogoText style={{ marginTop: "0px" }} scale={logoScale} />
     </LogoTextContainer>
   );
@@ -71,8 +67,7 @@ const NavContainer = styled("div")(
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    // justifyContent: "space-between",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     alignItems: "center",
     borderBottom: isTopNavBar ? "1px solid grey" : "",
     borderTop: isTopNavBar ? "" : "1px solid grey",
