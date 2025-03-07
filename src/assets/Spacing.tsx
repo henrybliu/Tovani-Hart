@@ -12,4 +12,6 @@ export const SPACING = {
 
 export const MOBILE_NAVBAR_SCREEN_WIDTH = 960;
 
+export const NAVBAR_HEIGHT = 60;
+
 export default SPACING;

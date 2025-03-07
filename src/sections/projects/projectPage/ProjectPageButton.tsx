@@ -4,6 +4,8 @@ import NorthIcon from "@mui/icons-material/North";
 import { styled } from "@mui/material";
 import TYPOGRAPHY from "../../../assets/Typography";
 import COLORS from "../../../assets/Colors";
+import useMobileScreen from "../../../utils/useMobileScreen";
+import { NAVBAR_HEIGHT } from "../../../assets/Spacing";
 
 type ProjectPageButtonProps = {
   text: string;
@@ -57,13 +59,23 @@ const ButtonText = styled("div")({
 
 export const ProjectPageBackButton = () => {
   const navigate = useNavigate();
+  const isMobileScreen = useMobileScreen();
 
   const handleBack = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate("/");
-    }
+    navigate("/");
+
+    setTimeout(() => {
+      const element = document.getElementById("projects");
+      if (element) {
+        element.scrollIntoView({ behavior: "auto" });
+
+        if (isMobileScreen) {
+          setTimeout(() => {
+            window.scrollBy({ top: -NAVBAR_HEIGHT, behavior: "auto" });
+          }, 5);
+        }
+      }
+    }, 5);
   };
 
   return (

@@ -5,7 +5,7 @@ import { styled } from "@mui/material";
 import COLORS from "../../assets/Colors";
 import useMobileScreen from "../../utils/useMobileScreen";
 import TYPOGRAPHY from "../../assets/Typography";
-import SPACING from "../../assets/Spacing";
+import SPACING, { NAVBAR_HEIGHT } from "../../assets/Spacing";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import CloseIcon from "@mui/icons-material/Close";
 import FadeIn from "../FadeIn";
@@ -268,7 +268,7 @@ const MobileNavBarContainer = styled("div")({
   justifyContent: "space-between",
   top: 0,
   width: "100%",
-  height: "60px",
+  height: `${NAVBAR_HEIGHT}px`,
   padding: "5px 20px",
   backgroundColor: COLORS.green,
   boxSizing: "border-box",
