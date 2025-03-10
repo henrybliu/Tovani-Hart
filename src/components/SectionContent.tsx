@@ -15,6 +15,7 @@ const Container = styled("div")({
   marginRight: `${SPACING.default}%`,
   maxWidth: `${46 * SPACING.default}px`,
   lineHeight: 1.4,
+  overflow: "hidden",
 });
 
 export default SectionContent;

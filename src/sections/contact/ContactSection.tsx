@@ -16,10 +16,7 @@ const {
   cityStateZip,
   phoneNumber,
   emailAddress,
-  mapImage,
 } = CONTACT_CONSTANTS;
-
-const mapFilePath = require(`../../assets/images/${mapImage}`);
 
 const ContactSection = ({ id }: { id: string }) => {
   const isMobileScreen = useMobileScreen();
@@ -35,13 +32,14 @@ const ContactSection = ({ id }: { id: string }) => {
           <SectionHeader>{header}</SectionHeader>
         </FadeIn>
         <FadeIn delay={100}>
-          <img
-            src={mapFilePath}
-            alt="map"
-            style={{
-              width: "100%",
-            }}
-          />
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5437.74761689968!2d-122.90533928807544!3d47.04270697102339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5491751cec7bde67%3A0xc575943384d981c1!2sTovani%20Hart!5e0!3m2!1sen!2sus!4v1741628518372!5m2!1sen!2sus"
+            style={{ width: "100%", height: "350px", border: "0px" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Tovani Hart Map"
+          ></iframe>
 
           <Paragraph>
             <Logo>{companyName}</Logo>

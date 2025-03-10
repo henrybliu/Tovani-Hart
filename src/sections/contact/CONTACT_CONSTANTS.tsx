@@ -5,7 +5,6 @@ type ContactConstantsProps = {
   cityStateZip: string;
   phoneNumber: string;
   emailAddress: string;
-  mapImage: string;
 };
 
 export const CONTACT_CONSTANTS: ContactConstantsProps = {
@@ -15,7 +14,6 @@ export const CONTACT_CONSTANTS: ContactConstantsProps = {
   cityStateZip: "Olympia, WA 98501",
   phoneNumber: "(360) 339-8274",
   emailAddress: "info@tovanihart.com",
-  mapImage: "map.jpg",
 };
 
 export default CONTACT_CONSTANTS;
