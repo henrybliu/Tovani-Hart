@@ -70,6 +70,13 @@ export const EMPLOYEE_CONSTANTS: EmployeeProps[] = [
     biography:
       "Chrissy has over 20 years of experience as a Bookkeeper, Controller, and Director of Operations, as well as extensive experience with payroll.  At Tovani Hart she works to support the team, primarily through her meticulous management of accounts-receivable and accounts-payable, to help keep project fees and consultant fees aligned with the progression of the project milestones.  Chrissy hails from Upstate New York, where she studied architecture at Syracuse University, but she has been calling the great Pacific Northwest “home” since 1992.  In her free time, Chrissy is an artist, most recently experimenting with large-scale 5’x5’ paintings on canvas, and she is an avid gardener who is practicing to someday be a flower farmer.",
   },
+    {
+    name: "Henry Liu",
+    image: "prof_headshot.jpg",
+    title: "Temp",
+    biography:
+      "Henry loves to code",
+  },
 ];
 
 export default TEAM_CONSTANTS;
