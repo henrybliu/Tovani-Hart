@@ -23,9 +23,10 @@ For biographies:
   - example:
     - "paragraph 1 \n paragraph 2 \n paragraph 3"
 
-- use \u2022 for bullet points and add a \n after the last bullet point
+- use \u2022 for bullet points and add a \n in the paragraph preceding the
+  first bullet point and after the last bullet point
   - example:
-    - "\u2022 bullet point 1 \u2022 bullet point 2 \u2022 bullet point 3 \n"
+    - "some random text \n \u2022 bullet point 1 \u2022 bullet point 2 \u2022 bullet point 3 \n"
 */
 export const EMPLOYEE_CONSTANTS: EmployeeProps[] = [
   {
